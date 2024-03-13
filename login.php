@@ -1,4 +1,5 @@
 <?php 
+//das wird alles nacher gelöscht
 session_start();
 
 $page_title = "Login Page";
