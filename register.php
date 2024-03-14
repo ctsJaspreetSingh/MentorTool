@@ -56,6 +56,15 @@ include('includes/navbar.php');
                                 <label for="">Confirm Password</label>
                                 <input type="password" name="confirm_password" class="form-control">
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="user_type">User Type</label>
+                                <select name="user_type" id="user_type" class="form-control">
+                                    <option value="Mentor">Mentor</option>
+                                    <option value="Mentee">Mentee</option>
+                                </select>
+                            </div>
+
+                            
                             <div class="form-group">
                                 <button type="submit" name="register_btn" class="btn btn-primary">Register Now</button>
                             </div>

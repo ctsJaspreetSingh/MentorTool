@@ -89,7 +89,10 @@ if(mysqli_num_rows($check_email_query_run) > 0)
 else
 {
   
-    $query = "INSERT INTO users (nachname, vorname,ctsID,email,password,verify_token) VALUES ('$nachname','$vorname', '$ctsID', '$email', '$password', '$verify_token')";
+    $user_type = $_POST['user_type']; // Annahme: Der Benutzer wählt den Benutzertyp im Registrierungsformular aus
+
+    $query = "INSERT INTO users (nachname, vorname, ctsID, email, password, verify_token, user_type) VALUES ('$nachname', '$vorname', '$ctsID', '$email', '$password', '$verify_token', '$user_type')";
+
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
