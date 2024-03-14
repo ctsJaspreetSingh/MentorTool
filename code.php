@@ -42,6 +42,7 @@ function sendemail_verify($name, $email, $verify_token)
 
         $mail->Body = $email_template;
         $mail->send();
+        
         echo "E-Mail wurde erfolgreich gesendet."; // Optional: Bestätigungsmeldung
         } catch (Exception $e) {
         echo "E-Mail konnte nicht gesendet werden. Fehler: {$mail->ErrorInfo}";

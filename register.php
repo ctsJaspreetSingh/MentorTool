@@ -11,18 +11,21 @@ include('includes/navbar.php');
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-            <div class="alert">
+
                     <?php
                         if(isset($_SESSION['status']))
                         {
-                            echo "<h4>".$_SESSION['status']."</h4>";
+                            ?>
+                            <div class="alert alert-success">
+                                <h5><?=$_SESSION['status']; ?></h5>
+                            </div>
+                            <?php
                             unset($_SESSION['status']);
                         }
                     ?>
-                </div>
-
+                    
                 <div class="card shadow">
-                    <div class="card-header">
+                <div class="card-header">
                         <h5>Registration form</h5>
                     </div>
 
