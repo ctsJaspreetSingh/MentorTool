@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 
-function sendemail_verify($name, $email, $verify_token)
+function sendemail_verify($nachname, $email, $verify_token)
 {
     $mail = new PHPMailer(true); // Hier wird ein neues PHPMailer-Objekt erstellt
 
@@ -28,7 +28,7 @@ function sendemail_verify($name, $email, $verify_token)
         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
         // Weitere E-Mail-Einstellungen
-        $mail->setFrom('eventplannersingh08@gmail.com', $name);
+        $mail->setFrom('eventplannersingh08@gmail.com', $nachname);
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'Email Verification from Jaspreet Singh';
@@ -54,12 +54,24 @@ function sendemail_verify($name, $email, $verify_token)
 
 if(isset($_POST['register_btn']))
 {
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
+    $nachname = $_POST['nachname'];
+    $vorname = $_POST['vorname'];
+    $ctsID = $_POST['ctsID'];
     $email = $_POST['email'];
     $password = $_POST['password'];
    // $confirm_password = $_POST['confirm_password'];
    $verify_token = md5(rand());
+
+
+   // Regex-Muster für Cognizant-E-Mail-Domäne
+   $pattern = '/@cognizant\.com$/i';
+
+   // Überprüfen, ob die E-Mail-Adresse zur Cognizant-Domäne gehört
+   if (!preg_match($pattern, $email)) {
+    $_SESSION['status'] =  "Die E-Mail-Adresse muss zu Cognizant gehören.";
+    header("Location: register.php");
+    exit; // Beenden Sie die Ausführung des Skripts, da die E-Mail-Adresse ungültig ist
+}
 
    //Email Exstits or not
    $check_email_query = "SELECT email FROM users WHERE email='$email' LIMIT 1";
@@ -70,16 +82,19 @@ if(mysqli_num_rows($check_email_query_run) > 0)
 {
     $_SESSION['status'] =  "Email Id already Exists";
     header("Location: register.php");
+  //  exit; // Beenden Sie die Ausführung des Skripts, da die E-Mail-Adresse bereits vorhanden ist
+   
+    
 }
 else
 {
-    //Isert User / Register User Data
-    $query = "INSERT INTO users (name,phone,email,password,verify_token) VALUES ('$name', '$phone', '$email', '$password', '$verify_token')";
+  
+    $query = "INSERT INTO users (nachname, vorname,ctsID,email,password,verify_token) VALUES ('$nachname','$vorname', '$ctsID', '$email', '$password', '$verify_token')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
     {
-        sendemail_verify("$name", "$email", "$verify_token");
+        sendemail_verify("$nachname", "$email", "$verify_token");
         $_SESSION['status'] =  "Registration Successful. Please Verify your Email";
         header("Location: register.php");
     }

@@ -33,12 +33,16 @@ include('includes/navbar.php');
                         
                         <form action="code.php" method="POST">
                             <div class="form-group mb-3">
-                                <label for="">Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <label for="">Nachname</label>
+                                <input type="text" name="nachname" class="form-control">
                             </div>
                             <div class="form-group mb-3">
-                                <label for="">Phone Number</label>
-                                <input type="text" name="phone" class="form-control">
+                                <label for="">Vorname</label>
+                                <input type="text" name="vorname" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="">ctsID</label>
+                                <input type="text" name="ctsID" class="form-control">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Email Address</label>

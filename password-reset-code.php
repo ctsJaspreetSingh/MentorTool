@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-function send_password_reset($get_name, $get_email, $token)
+function send_password_reset($get_nachname, $get_email, $token)
 {
     $mail = new PHPMailer(true); // Hier wird ein neues PHPMailer-Objekt erstellt
 
@@ -27,7 +27,7 @@ function send_password_reset($get_name, $get_email, $token)
         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
         // Weitere E-Mail-Einstellungen
-        $mail->setFrom('eventplannersingh08@gmail.com', $get_name);
+        $mail->setFrom('eventplannersingh08@gmail.com', $get_nachname);
         $mail->addAddress($get_email);
         $mail->isHTML(true);
         $mail->Subject = 'Reset Password Notification';
@@ -60,7 +60,7 @@ if(isset($_POST['password_reset_link']))
     if(mysqli_num_rows($check_email_run) > 0 )
     {
         $row = mysqli_fetch_array($check_email_run);
-        $get_name = $row['name'];
+        $get_nachname = $row['nachname'];
         $get_email = $row['email'];
 
         $update_token = "UPDATE users SET verify_token='$token' WHERE email='$get_email' LIMIT 1 ";
@@ -68,7 +68,7 @@ if(isset($_POST['password_reset_link']))
 
         if($update_token_run)
         {
-            send_password_reset($get_name, $get_email, $token);
+            send_password_reset($get_nachname, $get_email, $token);
             $_SESSION['status'] = "We sent you the reset email!";
             header("Location: password-reset.php");
             exit(0);

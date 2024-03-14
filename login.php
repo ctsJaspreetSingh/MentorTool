@@ -1,5 +1,5 @@
 <?php 
-//das wird alles nacher gelöscht
+
 session_start();
 
 if(isset($_SESSION['authenticated']))

@@ -31,7 +31,7 @@ include('includes/navbar.php');
                         <hr>
                         <h5>Username: <?=$_SESSION['auth_user']['username']; ?></h5>
                         <h5>Email ID: <?=$_SESSION['auth_user']['email']; ?></h5>
-                        <h5>Phone Number: <?=$_SESSION['auth_user']['phone']; ?></h5>
+                        <h5>ctsID: <?=$_SESSION['auth_user']['ctsID']; ?></h5>
                     </div>
                 </div>
             </div>

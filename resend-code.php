@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-function resend_email_verify($name, $email, $verify_token)
+function resend_email_verify($nachname, $email, $verify_token)
 {
     $mail = new PHPMailer(true); // Hier wird ein neues PHPMailer-Objekt erstellt
 
@@ -26,7 +26,7 @@ function resend_email_verify($name, $email, $verify_token)
         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
         // Weitere E-Mail-Einstellungen
-        $mail->setFrom('eventplannersingh08@gmail.com', $name);
+        $mail->setFrom('eventplannersingh08@gmail.com', $nachname);
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'Resend Email Verification from Jaspreet Singh';
@@ -63,11 +63,11 @@ if(isset($_POST['resend_email_verify_btn']))
             if($row['verify_status'] == "0")
             {
 
-                $name =  $row['name'];
+                $nachname =  $row['nachname'];
                 $email =  $row['email'];
                 $verify_token =  $row['verify_token'];
 
-                resend_email_verify($name, $email, $verify_token);
+                resend_email_verify($nachname, $email, $verify_token);
                 $_SESSION['status'] = "Verification Email Link has been sent to this email";
                 header("Location: login.php");
                 exit(0);

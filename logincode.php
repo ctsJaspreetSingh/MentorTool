@@ -21,8 +21,9 @@ if(isset($_POST['login_now_btn']))
             {
                 $_SESSION['authenticated'] = TRUE;
                 $_SESSION['auth_user'] = [
-                    'username' => $row['name'],
-                    'phone' => $row['phone'],
+                    'username' => $row['nachname'],
+                    'vorname' => $row['vorname'],
+                    'ctsID' => $row['ctsID'],
                     'email' => $row['email'],
                 ];
                 $_SESSION['status'] = "You are logged in successfully.";
