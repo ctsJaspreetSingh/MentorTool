@@ -1,5 +1,5 @@
 <?php 
-//das wird alles nacher gelöscht
+//das wird alles nache
 session_start();
 
 $page_title = "Registration Page";

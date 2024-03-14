@@ -1,4 +1,5 @@
 <?php
+//email verfikation
 session_start();
 include('dbcon.php');
 
