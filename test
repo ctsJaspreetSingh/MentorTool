@@ -15,6 +15,7 @@ if(isset($_POST['login_now_btn']))
         if(mysqli_num_rows($login_query_run) > 0)
         {
             $row = mysqli_fetch_array($login_query_run);
+
             if($row['verify_status'] == "1")
             {
                 $_SESSION['authenticated'] = TRUE;
@@ -25,6 +26,13 @@ if(isset($_POST['login_now_btn']))
                     'email' => $row['email'],
                     'user_type' => $row['user_type'], // Speichern des Benutzertyps in der Session
                 ];
+
+                // Überprüfen, ob das Profil bereits erstellt wurde
+                if ($row['profile_created'] == 0) {
+                    // Weiterleitung zur Profilerstellungsseite
+                    header("Location: create_profile.php");
+                    exit();
+                }
 
                 // Weiterleitung basierend auf dem Benutzertyp
                 if($row['user_type'] == 'Mentor')
@@ -41,21 +49,22 @@ if(isset($_POST['login_now_btn']))
             {
                 $_SESSION['status'] = "Please verify your Email";
                 header("Location: login.php");
-                exit(); // Beenden Sie das Skript nach der Weiterleitung
+                exit(0);
             }
         }
         else
         {
             $_SESSION['status'] = "Wrong Password or Email.";
             header("Location: login.php");
-            exit(); // Beenden Sie das Skript nach der Weiterleitung
+            exit(0);
         }
+
     }
     else
     {
         $_SESSION['status'] = "All fields are mandatory";
         header("Location: login.php");
-        exit(); // Beenden Sie das Skript nach der Weiterleitung
+        exit(0);
     }
 }
 ?>
