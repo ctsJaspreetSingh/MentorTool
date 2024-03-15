@@ -34,31 +34,32 @@ include('includes/navbar.php');
                         <form action="code.php" method="POST">
                             <div class="form-group mb-3">
                                 <label for="">Nachname</label>
-                                <input type="text" name="nachname" class="form-control">
+                                <input type="text" name="nachname" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Vorname</label>
-                                <input type="text" name="vorname" class="form-control">
+                                <input type="text" name="vorname" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">ctsID</label>
-                                <input type="text" name="ctsID" class="form-control">
+                                <input type="text" name="ctsID" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Email Address</label>
-                                <input type="text" name="email" class="form-control">
+                                <input type="text" name="email" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Password</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Confirm Password</label>
-                                <input type="password" name="confirm_password" class="form-control">
+                                <input type="password" name="confirm_password" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="user_type">User Type</label>
-                                <select name="user_type" id="user_type" class="form-control">
+                                <select name="user_type" id="user_type" class="form-control" placeholder="Rolle auswählen" required>
+                                    <option value="" disabled selected>Bitte Rolle auswählen</option>
                                     <option value="Mentor">Mentor</option>
                                     <option value="Mentee">Mentee</option>
                                 </select>

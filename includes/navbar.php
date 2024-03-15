@@ -16,9 +16,11 @@
                 <li class="nav-item">
                 <a class="nav-link active" href="index.php">Home</a>
                 </li>
+
+<!-- 
                 <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Dashboard</a>
-                </li>
+                </li> -->
 
                 <?php if(!isset($_SESSION['authenticated'])): ?>
 
