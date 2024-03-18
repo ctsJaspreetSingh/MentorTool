@@ -31,14 +31,22 @@ if (isset($_POST['create_profile_btn'])) {
     $query_run = mysqli_query($con, $query);
 
     if ($query_run) {
-        $_SESSION['status'] = "Profile created successfully.";
-        header("Location: dashboard.php"); // Weiterleitung zum Dashboard nach erfolgreicher Profilerstellung
-        exit();
-    } else {
-        $_SESSION['status'] = "Failed to create profile.";
-        header("Location: create_profile.php"); // Weiterleitung zur Profilerstellungsseite im Falle eines Fehlers
-        exit();
+        // Profil erfolgreich erstellt, jetzt das Feld 'profile_created' in der 'users'-Tabelle aktualisieren
+        $update_query = "UPDATE users SET profile_created = 1 WHERE id = '$user_id'";
+        $update_query_run = mysqli_query($con, $update_query);
+    
+        if ($update_query_run) {
+            $_SESSION['status'] = "Profile created successfully.";
+            $_SESSION['profile_created'] = true; // Setze das Flag für das erstellte Profil
+            header("Location: dashboard.php"); // Weiterleitung zum Dashboard nach erfolgreicher Profilerstellung
+            exit();
+        } else {
+            $_SESSION['status'] = "Failed to update profile status.";
+            header("Location: create_profile.php"); // Weiterleitung zur Profilerstellungsseite im Falle eines Fehlers
+            exit();
+        }
     }
+    
 }
 ?>
 
