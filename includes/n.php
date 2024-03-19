@@ -74,12 +74,6 @@
                 <ul class="navbar-nav ml-auto">
 
                 <?php if(isset($_SESSION['authenticated'])): ?>
-                    <?php if(basename($_SERVER['PHP_SELF']) === 'mentorDashboard.php'): ?> <!-- Prüfe, ob die aktive Seite "mentorDashboard.php" ist -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="mentor_request.php">Mentor Request</a>
-                            </li>
-                        <?php endif; ?>
-
                     <li class="nav-item">
                             <a class="nav-link profile" href="profile.php">
                                 <i class="bi bi-person" style="font-size: 2rem;"></i> <!-- Größeres Icon -->
@@ -93,7 +87,7 @@
                         </li>
 
                 <?php endif ?>
-
+                
                     <?php if(basename($_SERVER['PHP_SELF']) === 'register.php') { ?> <!-- Prüfe, ob die aktive Seite "register.php" ist -->
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">Login</a>
@@ -103,6 +97,7 @@
                             <a class="nav-link" href="register.php">Register</a>
                         </li>
                     <?php } ?>
+
                 </ul>
             </div>
         </div>

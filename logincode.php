@@ -33,8 +33,11 @@ if (isset($_POST['login_now_btn'])) {
 
                 // Weiterleitung basierend auf dem Benutzertyp
                 if ($row['user_type'] == 'Mentor') {
-                    header("Location: dashboard.php");
-                } 
+                    header("Location: mentorDashboard.php");
+                } else
+                {
+                    header("Location: menteeDashboard.php");
+                }
                 exit(); // Beenden Sie das Skript nach der Weiterleitung
             } else {
                 $_SESSION['status'] = "Please verify your Email";
@@ -52,4 +55,5 @@ if (isset($_POST['login_now_btn'])) {
         exit(0);
     }
 }
+session_destroy();
 ?>

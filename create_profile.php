@@ -38,7 +38,7 @@ if (isset($_POST['create_profile_btn'])) {
         if ($update_query_run) {
             $_SESSION['status'] = "Profile created successfully.";
             $_SESSION['profile_created'] = true; // Setze das Flag für das erstellte Profil
-            header("Location: dashboard.php"); // Weiterleitung zum Dashboard nach erfolgreicher Profilerstellung
+            header("Location: mentorDashboard.php"); // Weiterleitung zum Dashboard nach erfolgreicher Profilerstellung
             exit();
         } else {
             $_SESSION['status'] = "Failed to update profile status.";
@@ -58,6 +58,8 @@ if (isset($_POST['create_profile_btn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="container mt-5">

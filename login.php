@@ -5,7 +5,7 @@ session_start();
 if(isset($_SESSION['authenticated']))
 {
     $_SESSION['status'] = "You are already logged in";
-    header('Location: dashboard.php');
+    header('Location: mentorDashboard.php');
     exit(0);
 }
 

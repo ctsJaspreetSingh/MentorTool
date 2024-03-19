@@ -49,8 +49,10 @@ function showProfileDetails(userId) {
 }
 
 
+/* 
 // Funktion zum Verstecken der erweiterten Informationen
 function hideDetails() {
     $('#dataContainer').empty(); // Leeren des Datencontainers
     $('#hideDetailsButton').hide(); // Verstecken des Buttons
 }
+ */
