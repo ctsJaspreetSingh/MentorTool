@@ -24,12 +24,14 @@ include('includes/navbar.php');
 
                 <!-- Buttons für Register und Login -->
                 <div class="mt-4">
-                    <a href="register.php" class="btn btn-primary mx-2">Register</a>
-                    <a href="login.php" class="btn btn-success mx-2">Login</a>
-                </div>
+    <a href="register.php" class="btn btn-primary mx-2" style="background-color: #98B6DC; border: none;">Register</a>
+    <a href="login.php" class="btn btn-success mx-2" style="background-color: #98B6DC; border: none;">Login</a>
+</div>
+
+
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 <?php include('includes/footer.php'); ?>

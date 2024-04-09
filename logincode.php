@@ -40,19 +40,28 @@ if (isset($_POST['login_now_btn'])) {
                 }
                 exit(); // Beenden Sie das Skript nach der Weiterleitung
             } else {
-                $_SESSION['status'] = "Please verify your Email";
-                header("Location: login.php");
+                echo '<script>
+                        window.alert("Bitte verifizieren Sie Ihre Email 
+                        zuerst und versuchen es später nochmals.");
+                        window.location.href = "login.php";
+                    </script>'; 
                 exit(0);
             }
         } else {
             $_SESSION['status'] = "Wrong Password or Email.";
-            header("Location: login.php");
-            exit(0);
+            echo '<script>
+                    window.alert("Wrong Password or Email");
+                    window.location.href = "login.php";
+                </script>';
+          
         }
     } else {
-        $_SESSION['status'] = "All fields are mandatory";
-        header("Location: login.php");
-        exit(0);
+        
+        echo '<script>
+                window.alert("All fields are mandatory");
+                window.location.href = "login.php";
+            </script>';
+        
     }
 }
 session_destroy();

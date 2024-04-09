@@ -25,18 +25,18 @@ include('includes/navbar.php');
 
             <div class="card">
                 <div class="card-header">
-                    <h5>Resend Email Verification</h5>
+                    <h5>Email Verifikation erneut senden</h5>
                 </div>
 
                 <div class="card-body">
 
                     <form action="resend-code.php" method="POST">
                         <div class="form-group mb-3">
-                            <label>Email Address</label>
-                            <input type="text" name="email" class="form-control" placeholder="Enter Email Adress">
+                            <label>Email Adresse</label>
+                            <input type="text" name="email" class="form-control" placeholder="Email Adresse eingeben">
                         </div>
                         <div class="form-group mb-3">
-                                <button type="submit" name="resend_email_verify_btn" class="btn btn-primary">Submit</button>
+                                <button type="submit" name="resend_email_verify_btn" class="btn btn-primary">Abschicken</button>
                             </div>
                     </form>
                 </div>

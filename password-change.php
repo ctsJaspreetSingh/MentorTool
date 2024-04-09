@@ -33,20 +33,21 @@ include('includes/navbar.php');
                         <input type="hidden" name="password_token" value="<?php if(isset($_GET['token'])) {echo $_GET['token'];} ?>">
 
                         <div class="form-group mb-3">
-                            <label>Email Address</label>
-                            <input type="text" name="email" value="<?php if(isset($_GET['email'])) {echo $_GET['email'];} ?>" class="form-control" placeholder="Enter Email Adress">
+                            <label>Email Adresse</label>
+                            <input type="text" name="email" value="<?php if(isset($_GET['email'])) {echo $_GET['email'];} ?>" 
+                                    class="form-control" placeholder="Enter Email Adress">
                         </div>
                         <div class="form-group mb-3">
-                            <label>New Password</label>
-                            <input type="text" name="new_password" class="form-control" placeholder="Enter New Password">
+                            <label>Neue Passwort</label>
+                            <input type="text" name="new_password" class="form-control" placeholder="Neue Passwort eingeben">
                         </div>
                         <div class="form-group mb-3">
-                            <label>Confirm Password</label>
-                            <input type="text" name="confirm_password" class="form-control" placeholder="Enter Confirm Password">
+                            <label>Passwort bestätigen</label>
+                            <input type="text" name="confirm_password" class="form-control" placeholder="Neuen Passwort bestätigen">
                         </div>
 
                         <div class="form-group mb-3">
-                                <button type="submit" name="password_update" class="btn btn-success w-100">Update Password</button>
+                                <button type="submit" name="password_update" class="btn btn-success w-100">Passwort ändern</button>
                             </div>
                     </form>
                 </div>

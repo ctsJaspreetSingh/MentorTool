@@ -2,9 +2,9 @@
 include('dbcon.php');
 
 // Überprüfen, ob die Anfrage-ID übergeben wurde
-if(isset($_GET['id'])) {
+if(isset($_POST['request_id'])) {
     // Anfrage-ID erhalten
-    $requestId = $_GET['id'];
+    $requestId = $_POST['request_id'];
 
     // SQL-Abfrage zum Löschen der Anfrage
     $query = "DELETE FROM requests WHERE id = $requestId";
@@ -22,6 +22,7 @@ if(isset($_GET['id'])) {
     echo "Anfrage-ID nicht gefunden.";
 }
 
-// Datenbankverbindung schließen
-mysqli_close($con);
+// Weiterleitung zurück zur mentee_request.php Seite
+header("Location: mentee_request.php");
+exit();
 ?>

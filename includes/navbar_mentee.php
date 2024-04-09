@@ -18,6 +18,24 @@
 
         .navbar-nav .nav-link {
             color: #fff; /* Textfarbe ändern */
+            position: relative; /* Positionierung relativ zum Elternelement */
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            content: attr(data-text); /* Zeige den Text an, der im "data-text" Attribut des Elements enthalten ist */
+            position: absolute; /* Absolute Positionierung */
+            top: 100%; /* Position unterhalb des Icons */
+            left: 50%; /* Horizontal zentrieren */
+            transform: translateX(-50%); /* Zurückverschieben um die Hälfte der Breite */
+            background-color: #333; /* Hintergrundfarbe */
+            color: #fff; /* Textfarbe */
+            padding: 0.5rem; /* Innenabstand */
+            border-radius: 5px; /* Abgerundete Ecken */
+            z-index: 1; /* Über dem Icon anzeigen */
+        }
+
+        .navbar-nav .nav-link.active {
+            background-color: #3A3EAC; /* Hervorhebungsfarbe für den aktiven Link */
         }
 
         .navbar-toggler {
@@ -25,45 +43,8 @@
             border-color: #fff; /* Farbe des Toggler-Buttons ändern */
         }
 
-        .nav-link.logout {
-            position: relative; /* Positionierung relativ zum Elternelement */
-        }
-
-        .nav-link.logout:hover::after {
-            content: "Logout"; /* Text anzeigen */
-            position: absolute; /* Absolute Positionierung */
-            top: 100%; /* Position unterhalb des Icons */
-            left: 50%; /* Horizontal zentrieren */
-            transform: translateX(-50%); /* Zurückverschieben um die Hälfte der Breite */
-            background-color: #333; /* Hintergrundfarbe */
-            color: #fff; /* Textfarbe */
-            padding: 0.5rem; /* Innenabstand */
-            border-radius: 5px; /* Abgerundete Ecken */
-            z-index: 1; /* Über dem Icon anzeigen */
-        }
-
-
-        .nav-link.profile {
-            position: relative; /* Positionierung relativ zum Elternelement */
-        }
-
-        .nav-link.profile:hover::after {
-            content: "Profile"; /* Text anzeigen */
-            position: absolute; /* Absolute Positionierung */
-            top: 100%; /* Position unterhalb des Icons */
-            left: 50%; /* Horizontal zentrieren */
-            transform: translateX(-50%); /* Zurückverschieben um die Hälfte der Breite */
-            background-color: #333; /* Hintergrundfarbe */
-            color: #fff; /* Textfarbe */
-            padding: 0.5rem; /* Innenabstand */
-            border-radius: 5px; /* Abgerundete Ecken */
-            z-index: 1; /* Über dem Icon anzeigen */
-        }
-
     </style>
 </head>
-
-
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -74,32 +55,37 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-
-                <?php if(isset($_SESSION['authenticated'])): ?>
-
-                    <li class="nav-item">
-                            <a class="nav-link profile" href="profile.php">
-                                <i class="bi bi-person" style="font-size: 2rem;"></i> <!-- Größeres Icon -->
+                    <?php if(isset($_SESSION['authenticated'])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'menteeDashboard.php' ? 'active' : '' ?>" href="menteeDashboard.php" data-text="Dashboard">
+                                <i class="bi bi-caret-down-square-fill"></i>
                             </a>
                         </li>
-                    
-                    <li class="nav-item">
-                            <a class="nav-link logout" href="logout.php">
-                                <i class="bi bi-box-arrow-right" style="font-size: 2rem;"></i> <!-- Logout-Icon -->
+                        <li class="nav-item">
+                            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'mentee_request.php' ? 'active' : '' ?>" href="mentee_request.php" data-text="Request">
+                                <i class="bi bi-card-list"></i>
                             </a>
                         </li>
-
-                <?php endif ?>
-
-                    <?php if(basename($_SERVER['PHP_SELF']) === 'register.php') { ?> <!-- Prüfe, ob die aktive Seite "register.php" ist -->
+                        <li class="nav-item">
+                            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'profile.php' ? 'active' : '' ?>" href="profile.php" data-text="Profile">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout <?= basename($_SERVER['PHP_SELF']) === 'logout.php' ? 'active' : '' ?>" href="logout.php" data-text="Logout">
+                                <i class="bi bi-box-arrow-right"></i>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if(basename($_SERVER['PHP_SELF']) === 'register.php'): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">Login</a>
                         </li>
-                    <?php } elseif(basename($_SERVER['PHP_SELF']) === 'login.php') { ?> <!-- Prüfe, ob die aktive Seite "login.php" ist -->
+                    <?php elseif(basename($_SERVER['PHP_SELF']) === 'login.php'): ?>
                         <li class="nav-item">
                             <a class="nav-link" href="register.php">Register</a>
                         </li>
-                    <?php } ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

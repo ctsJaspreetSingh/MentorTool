@@ -69,7 +69,7 @@ if(isset($_POST['password_reset_link']))
         if($update_token_run)
         {
             send_password_reset($get_nachname, $get_email, $token);
-            $_SESSION['status'] = "We sent you the reset email!";
+            $_SESSION['status'] = "Passwort Reset Email wurde verschickt!";
             header("Location: password-reset.php");
             exit(0);
         }
@@ -82,7 +82,7 @@ if(isset($_POST['password_reset_link']))
     }
     else
     {
-            $_SESSION['status'] = "No Email found";
+            $_SESSION['status'] = "Email nicht gefunden";
             header("Location: password-reset.php");
             exit(0);
     }
@@ -113,7 +113,7 @@ if(isset($_POST['password_update']))
 
                     if($update_password_run)
                     {
-                        $_SESSION['status'] = "Password updated successfully";
+                        $_SESSION['status'] = "Passwort wurde erfolgreich aktuallisiert.";
                         header("Location: login.php");
                         exit(0);
 
@@ -127,7 +127,7 @@ if(isset($_POST['password_update']))
                 }
                 else 
                 {
-                    $_SESSION['status'] = "Password and Confirm Password does not match";
+                    $_SESSION['status'] = "Beide Passwörter stimmen nicht überein.";
                 header("Location: password-change.php?token=$token&email=$email");
                 exit(0);
                 }

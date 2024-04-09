@@ -4,15 +4,15 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-if(isset($_POST['mentor_id']) && isset($_POST['mentee_id'])) {
+if(isset($_POST['mentor_id']) && isset($_POST['mentee_id']) && isset($_POST['mentor_email'])) {
     // Hier den Code einfügen, um die E-Mail-Anfrage an den Mentor zu senden
     $mentorId = $_POST['mentor_id'];
     $menteeId = $_POST['mentee_id']; // Hinzufügen der menteeId
+    $mentorEmail = $_POST['mentor_email']; // Abrufen der Mentor-E-Mail-Adresse
 
     // Code für das Senden der E-Mail an den Mentor unter Verwendung von PHPMailer
-    $mentorEmail = "jaspreet.singh4118@gmail.com"; // E-Mail-Adresse des Mentors
     $subject = "Anfrage von einem Mentee"; // Betreff der E-Mail
-    $message = "Hallo,\n\nEine Anfrage von einem Mentee wurde gesendet. \n\n Unter dem folgenden Link können Sie Ihre Anfrage anschauen. \n\n http://localhost/kopien/MentorToolK/mentor_request.php"; // Nachricht der E-Mail
+    $message = "Hallo,\n\nEine Anfrage von einem Mentee wurde gesendet. \n\n Unter dem folgenden Link können Sie Ihre Anfrage anschauen. \n\n http://localhost/MentorToolK/mentor_request.php"; // Nachricht der E-Mail
 
     $mail = new PHPMailer(true);
 
@@ -21,16 +21,15 @@ if(isset($_POST['mentor_id']) && isset($_POST['mentee_id'])) {
         $mail->isSMTP();  
         $mail->SMTPAuth = true;
         $mail->Host = 'smtp.gmail.com';
-        $mail->Username = 'eventplannersingh08@gmail.com';
-        $mail->Password = 'hkhr jbgj ocqk oqaf';
+        $mail->Username = 'mentortoolsingh@gmail.com';
+        $mail->Password = 'nnhd xrhz iowc mgnr';
         $mail->SMTPSecure = "tls";
         $mail->Port = 587;
 
         // Empfänger und Betreff festlegen
-        $mail->setFrom('eventplannersingh08@gmail.com', 'Jaspreet Singh');
+        $mail->setFrom('mentortoolsingh@gmail.com', 'Jaspreet Singh');
         $mail->addAddress($mentorEmail);
         $mail->Subject = $subject;
-    
 
         // E-Mail-Nachricht festlegen
         $mail->Body = $message;
@@ -53,6 +52,6 @@ if(isset($_POST['mentor_id']) && isset($_POST['mentee_id'])) {
         echo "E-Mail konnte nicht gesendet werden. Mailer Error: {$mail->ErrorInfo}";
     }
 } else {
-    echo "Fehler: Mentor-ID oder Mentee-ID nicht gefunden.";
+    echo "Fehler: Mentor-ID, Mentee-ID oder Mentor-E-Mail nicht gefunden.";
 }
 ?>

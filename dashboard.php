@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-$page_title = "Mentor Dashboard";
+$page_title = "Dashboard";
 include('includes/header.php'); 
 include('includes/navbar.php'); 
 

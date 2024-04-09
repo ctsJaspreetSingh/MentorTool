@@ -31,16 +31,17 @@ include('includes/navbar.php');
                 <div class="card-body p-4">
 
                     <form action="password-reset-code.php" method="POST">
-                        
                         <div class="form-group mb-3">
-                            <label>Email Address</label>
-                            <input type="text" name="email" class="form-control" placeholder="Enter Email Adress">
+                            <label>Email Addresse</label>
+                            <input type="text" name="email" class="form-control" placeholder="Email Adresse eingeben"> 
                         </div>
                         <div class="form-group mb-3">
-                                <button type="submit" name="password_reset_link" class="btn btn-primary">Send Password Reset Link</button>
+                                <button type="submit" name="password_reset_link" class="btn btn-primary">
+                                    Passwort Reset senden
+                                </button>
                         </div>
-
                     </form>
+                    
                 </div>
             </div>
 
